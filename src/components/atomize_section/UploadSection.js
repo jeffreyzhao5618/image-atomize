@@ -17,13 +17,28 @@ function UploadSection(props) {
                 <ImagePlaceholder />
             }
             
-            <FileInput className="form-control mt-3" type="file" id="formFile" accept=".jpg,.png" 
+            <FileInput className="form-control mt-3" type="file" id="formFile" accept=".jpg,.png"
+                disabled={props.myState.isProcessing}
                 onChange={e => {
                     console.log(e)
                     if (e.target.value != "") {
                         props.setImageUrl(URL.createObjectURL(e.target.files[0]));
+                        props.setMyState(
+                            {
+                                isReady: true,
+                                isProcessing: false,
+                                isCompleted: false
+                            }
+                        )
                     } else {
                         props.setImageUrl(null);
+                        props.setMyState(
+                            {
+                                isReady: false,
+                                isProcessing: false,
+                                isCompleted: false
+                            }
+                        )
                     }  
                 }
             }/>

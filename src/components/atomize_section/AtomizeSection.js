@@ -5,12 +5,13 @@ import { useState } from "react";
 
 function AtomizeSection() {
 
-    const myStateObject = {
-        isReady: false,
-        isProcessing: false,
-        isCompleted: false
-    }
-    const [myState, setMyState] = useState(myStateObject);
+    const [myState, setMyState] = useState(
+        {
+            isReady: false,
+            isProcessing: false,
+            isCompleted: false
+        }
+    );
     const [imageUrl, setImageUrl] = useState(null);
 
     return (
