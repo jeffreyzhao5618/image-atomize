@@ -21,11 +21,9 @@ const ImagePlaceholderIcon = styled.img`
 
 function ImageSection(props) {
     return (
-        <div className="container pt-5">
-            <ImagePlaceholderDiv>
-                <ImagePlaceholderIcon className="user-select-none" src={faImage} />
-            </ImagePlaceholderDiv>
-        </div>
+        <ImagePlaceholderDiv>
+            <ImagePlaceholderIcon className="user-select-none" src={faImage} />
+        </ImagePlaceholderDiv>
     )
 }
 
