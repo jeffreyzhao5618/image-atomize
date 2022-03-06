@@ -6,13 +6,13 @@ function AtomizeSection() {
         <div className="container">
             <div className="row pb-5">
                 <div className="col-lg">
-                    <UploadSection buttonText="Upload Image" buttonDisabled={false} />
+                    <UploadSection />
                 </div>
                 <div className="col-lg">
                 Column
                 </div>
                 <div className="col-lg">
-                    <DownloadSection buttonText="Download Image" buttonDisabled={true}/>
+                    <DownloadSection />
                 </div>
             </div>
             <hr/>
