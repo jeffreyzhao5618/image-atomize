@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 import faImage from './image-regular.svg'
 
-
 const ImagePlaceholderDiv = styled.div`
     width: 90%;
     aspect-ratio: 1 / 1;
@@ -20,12 +19,14 @@ const ImagePlaceholderIcon = styled.img`
     transform: translate(-50%, -50%);
 `
 
-function ImagePlaceholder() {
+function ImageSection(props) {
     return (
-        <ImagePlaceholderDiv>
-            <ImagePlaceholderIcon className="user-select-none" src={faImage} />
-        </ImagePlaceholderDiv>
+        <div className="container pt-5">
+            <ImagePlaceholderDiv>
+                <ImagePlaceholderIcon className="user-select-none" src={faImage} />
+            </ImagePlaceholderDiv>
+        </div>
     )
 }
 
-export default ImagePlaceholder
+export default ImageSection
