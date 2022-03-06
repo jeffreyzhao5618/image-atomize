@@ -1,12 +1,33 @@
-import MyButton from "./MyButton"
+import styled from 'styled-components'
 import ImagePlaceholder from "./ImagePlaceholder"
 
-function UploadSection() {
+const FileInput = styled.input`
+    display: block;
+    margin: auto;
+    font-size: 1.25rem;
+`
+
+function UploadSection(props) {
+
     return (
-        <div>
-            <ImagePlaceholder />
-            <MyButton className="btn btn-secondary btn-lg mt-3">Upload Image</MyButton>
-        </div>
+        <>
+            {props.imageUrl ?
+                <img style={{width: "100%"}} src={props.imageUrl} />
+            :
+                <ImagePlaceholder />
+            }
+            
+            <FileInput className="form-control mt-3" type="file" id="formFile" accept=".jpg,.png" 
+                onChange={e => {
+                    console.log(e)
+                    if (e.target.value != "") {
+                        props.setImageUrl(URL.createObjectURL(e.target.files[0]));
+                    } else {
+                        props.setImageUrl(null);
+                    }  
+                }
+            }/>
+        </>
     )
 }
 
