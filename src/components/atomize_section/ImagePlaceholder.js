@@ -2,7 +2,6 @@ import styled from 'styled-components'
 import faImage from './image-regular.svg'
 
 const ImagePlaceholderDiv = styled.div`
-    width: 90%;
     aspect-ratio: 1 / 1;
     border-style: dashed;
     border-color: #696969;
