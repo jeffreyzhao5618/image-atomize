@@ -1,12 +1,12 @@
-import time
-from flask import Flask
+from flask import Flask, request, Response
+from flask_cors import CORS
 
-app =Flask(__name__)
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
-@app.route('/time')
-def get_current_time():
-    return {'time': time.time()}
+app=Flask(__name__)
+cors = CORS(app)
+# app.config['CORS_HEADERS'] = 'Content-Type'
 
 @app.route('/atomize', methods=['POST'])
 def atomize():
-    print(request)
+    return "testing"
