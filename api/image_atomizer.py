@@ -1,8 +1,9 @@
 from PIL import Image
+from io import BytesIO
 
 def main():
     og_img = Image.open('abigal_best_girl.png')#specify image to use
-    border = 200 #amount of small pictures that make up a side of the completed picture
+    border = 50 #amount of small pictures that make up a side of the completed picture
     fin_img = process(og_img, border)
     
     if input("Do you want to save completed picture?(y/n): ")[0].lower() == "y":
@@ -12,11 +13,13 @@ def main():
     else:
         fin_img.show()
 
-def atomize(file, border):
+def process_image(file, border):
+    img_io = BytesIO()
     with Image.open(file) as im:
         fin_img = process(im, border)
-        fin_img.show()
-        return fin_img
+        fin_img.save(img_io, format='png')
+    img_io.seek(0)
+    return(img_io)
 
 
 smol_img_res = 50 # the resolution of the small image
@@ -66,7 +69,9 @@ def process(og_img, border = 100, mode = None):
             print("Working...")
             pix_coord = (int(og_width/border*x), int(og_height/border*y))
             pix = og_img.getpixel(pix_coord)
-            r, g, b, _ = pix
+            r = pix[0]
+            g = pix[1]
+            b = pix[2]
             tint_img = tint(smol_img, r, g, b)
             coord = (smol_width*x, smol_height*y)
             fin_img.paste(tint_img, coord)

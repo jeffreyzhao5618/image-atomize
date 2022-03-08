@@ -1,5 +1,7 @@
-from flask import Flask, request, Response
+from flask import Flask, request, send_file
 from flask_cors import CORS
+from image_atomizer import process_image
+from io import BytesIO
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
@@ -19,8 +21,8 @@ def atomize():
     if file.filename == '':
         return {"error": "Error: No file was uploaded."}
     if file and allowed_file(file.filename):
-        #TODO Image Proccessing
-        return {"success": "that was a success"}
+        img_io = process_image(file, 50)
+        return send_file(img_io, mimetype='image/png')
     if file and not allowed_file(file.filename):
         return {"error": "Error: Invalid file type. (Only png and jpg are valid)"}
     return {"error": "Something went wrong."}
