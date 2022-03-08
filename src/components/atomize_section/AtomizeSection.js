@@ -14,6 +14,7 @@ function AtomizeSection() {
     );
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
+    const [atomizedImageUrl, setAtomizedImageUrl] = useState(null);
 
     return (
         <div className="container">
@@ -34,10 +35,17 @@ function AtomizeSection() {
                         setMyState={setMyState}
                         selectedImage={selectedImage}
                         setSelectedImage={setSelectedImage}
+                        atomizedImageUrl={atomizedImageUrl}
+                        setAtomizedImageUrl={setAtomizedImageUrl}
                     />
                 </div>
                 <div className="col-lg py-5">
-                    <DownloadSection myState={myState} setMyState={setMyState} />
+                    <DownloadSection
+                        myState={myState}
+                        setMyState={setMyState}
+                        atomizedImageUrl={atomizedImageUrl}
+                        setAtomizedImageUrl={setAtomizedImageUrl}
+                    />
                 </div>
             </div>
             <hr/>

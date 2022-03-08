@@ -11,8 +11,8 @@ function SettingsSection(props) {
                 body: formData
             }
         );
-        const data = await response.json()
-        console.log(data)
+        const data = await response.blob()
+        props.setAtomizedImageUrl(URL.createObjectURL(data))
     }
 
     return (
