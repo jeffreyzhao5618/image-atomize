@@ -2,7 +2,7 @@ from PIL import Image
 
 def main():
     og_img = Image.open('abigal_best_girl.png')#specify image to use
-    border = 20 #amount of small pictures that make up a side of the completed picture
+    border = 200 #amount of small pictures that make up a side of the completed picture
     fin_img = process(og_img, border)
     
     if input("Do you want to save completed picture?(y/n): ")[0].lower() == "y":
@@ -12,16 +12,25 @@ def main():
     else:
         fin_img.show()
 
+def atomize(file, border):
+    with Image.open(file) as im:
+        fin_img = process(im, border)
+        fin_img.show()
+        return fin_img
+
+
+smol_img_res = 50 # the resolution of the small image
+
 #makes a smaller version of the image and returns it
 def smolify(image):
     og_width = image.width
     og_height = image.height
 
     if og_width > og_height:
-        new_width = 50
+        new_width = smol_img_res
         new_height = int(new_width/og_width * og_height) 
     else:
-        new_height = 50
+        new_height = smol_img_res
         new_width = int(new_height/og_height * og_width)
     
     size = new_width,new_height
