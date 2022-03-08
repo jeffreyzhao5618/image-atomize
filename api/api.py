@@ -7,6 +7,20 @@ app=Flask(__name__)
 cors = CORS(app)
 # app.config['CORS_HEADERS'] = 'Content-Type'
 
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
 @app.route('/atomize', methods=['POST'])
 def atomize():
-    return "testing"
+    if 'file' not in request.files:
+        return {"error": "Error: No file was uploaded."}
+    file = request.files['file']
+    if file.filename == '':
+        return {"error": "Error: No file was uploaded."}
+    if file and allowed_file(file.filename):
+        #TODO Image Proccessing
+        return {"success": "that was a success"}
+    if file and not allowed_file(file.filename):
+        return {"error": "Error: Invalid file type. (Only png and jpg are valid)"}
+    return {"error": "Something went wrong."}

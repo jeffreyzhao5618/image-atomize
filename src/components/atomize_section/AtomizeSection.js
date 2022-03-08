@@ -13,6 +13,7 @@ function AtomizeSection() {
         }
     );
     const [imageUrl, setImageUrl] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(null);
 
     return (
         <div className="container">
@@ -23,10 +24,17 @@ function AtomizeSection() {
                         setMyState={setMyState}
                         imageUrl={imageUrl}
                         setImageUrl={setImageUrl}
+                        selectedImage={selectedImage}
+                        setSelectedImage={setSelectedImage}
                     />
                 </div>
                 <div className="col-lg py-5">
-                    <SettingsSection myState={myState} setMyState={setMyState} />
+                    <SettingsSection
+                        myState={myState}
+                        setMyState={setMyState}
+                        selectedImage={selectedImage}
+                        setSelectedImage={setSelectedImage}
+                    />
                 </div>
                 <div className="col-lg py-5">
                     <DownloadSection myState={myState} setMyState={setMyState} />
