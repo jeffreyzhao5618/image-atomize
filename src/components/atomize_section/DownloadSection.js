@@ -1,5 +1,5 @@
-import MyButton from "./MyButton"
 import ImagePlaceholder from "./ImagePlaceholder"
+import styles from "./style.module.css"
 
 function DownloadSection(props) {
     return (
@@ -9,7 +9,7 @@ function DownloadSection(props) {
             :
                 <ImagePlaceholder />
             }
-            <MyButton className="btn btn-secondary btn-lg mt-3">Download Image</MyButton>
+            <button className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}>Download Image</button>
         </div>
     )
 }

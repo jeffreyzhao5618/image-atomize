@@ -1,4 +1,4 @@
-import MyButton from "./MyButton"
+import styles from './style.module.css'
 
 function SettingsSection(props) {
 
@@ -17,11 +17,11 @@ function SettingsSection(props) {
 
     return (
         <div>
-            <MyButton 
-                className="btn btn-primary btn-lg"
+            <button 
+                className={`btn btn-primary btn-lg ${styles.fill}`}
                 disabled={props.myState.isReady ? false : true}
                 onClick={postImage}
-            > Atomize!</MyButton>
+            > Atomize!</button>
         </div>
     )
 }
