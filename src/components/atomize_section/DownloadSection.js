@@ -23,6 +23,7 @@ function DownloadSection(props) {
             <button
                 className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}
                 onClick={() => download(props.atomizedImageName)}
+                disabled={!props.myState.isCompleted}
             >
                 Download Image
             </button>

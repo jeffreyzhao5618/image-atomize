@@ -10,6 +10,13 @@ function SettingsSection(props) {
     }
 
     async function postImage() {
+        props.setMyState(
+            {
+                isReady: false,
+                isProcessing: true,
+                isCompleted: false
+            }
+        )
         const formData = new FormData();
         formData.append('file', props.selectedImage );
         const response = await fetch('http://127.0.0.1:5000/atomize',
@@ -21,13 +28,20 @@ function SettingsSection(props) {
         const data = await response.blob()
         props.setAtomizedImageUrl(URL.createObjectURL(data))
         props.setAtomizedImageName(getName(props.imageName));
+        props.setMyState(
+            {
+                isReady: false,
+                isProcessing: false,
+                isCompleted: true
+            }
+        )
     }
 
     return (
         <div>
             <button 
                 className={`btn btn-primary btn-lg ${styles.fill}`}
-                disabled={props.myState.isReady ? false : true}
+                disabled={!props.myState.isReady}
                 onClick={postImage}
             > Atomize!</button>
         </div>

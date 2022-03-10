@@ -29,16 +29,17 @@ function UploadSection(props) {
                                 {
                                     isReady: true,
                                     isProcessing: false,
-                                    isCompleted: false
+                                    isCompleted: props.myState.isCompleted
                                 }
                             );
                         } else {
+                            props.setImageUrl(null);
                             props.setSelectedImage(null);
                             props.setMyState(
                                 {
                                     isReady: false,
                                     isProcessing: false,
-                                    isCompleted: false
+                                    isCompleted: props.myState.isCompleted
                                 }
                             )
                         }  
