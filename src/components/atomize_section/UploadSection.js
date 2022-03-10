@@ -22,6 +22,7 @@ function UploadSection(props) {
                 onChange={e => 
                     {
                         if (e.target.value != "") {
+                            props.setImageName(e.target.files[0].name);
                             props.setImageUrl(URL.createObjectURL(e.target.files[0]));
                             props.setSelectedImage(e.target.files[0]);
                             props.setMyState(
@@ -32,7 +33,6 @@ function UploadSection(props) {
                                 }
                             );
                         } else {
-                            props.setImageUrl(null);
                             props.setSelectedImage(null);
                             props.setMyState(
                                 {

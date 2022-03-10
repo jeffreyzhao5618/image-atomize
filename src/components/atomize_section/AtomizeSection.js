@@ -12,6 +12,7 @@ function AtomizeSection() {
             isCompleted: false
         }
     );
+    const [imageName, setImageName] = useState(null);
     const [imageUrl, setImageUrl] = useState(null);
     const [selectedImage, setSelectedImage] = useState(null);
     const [atomizedImageUrl, setAtomizedImageUrl] = useState(null);
@@ -27,6 +28,7 @@ function AtomizeSection() {
                         setImageUrl={setImageUrl}
                         selectedImage={selectedImage}
                         setSelectedImage={setSelectedImage}
+                        setImageName = {setImageName}
                     />
                 </div>
                 <div className="col-lg py-5">
@@ -45,6 +47,7 @@ function AtomizeSection() {
                         setMyState={setMyState}
                         atomizedImageUrl={atomizedImageUrl}
                         setAtomizedImageUrl={setAtomizedImageUrl}
+                        imageName={imageName}
                     />
                 </div>
             </div>
