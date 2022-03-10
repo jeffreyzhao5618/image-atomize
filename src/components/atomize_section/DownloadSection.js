@@ -13,12 +13,6 @@ function DownloadSection(props) {
         link.parentNode.removeChild(link);
     }
 
-    const getName = filename => {
-        if (filename == null) return;
-        const arr = filename.split('.');
-        arr[0] = arr[0] + '_atomized';
-        return arr.join('.');
-    }
     return (
         <div>
             {props.atomizedImageUrl ?
@@ -28,7 +22,7 @@ function DownloadSection(props) {
             }
             <button
                 className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}
-                onClick={() => download(getName(props.imageName))}
+                onClick={() => download(props.atomizedImageName)}
             >
                 Download Image
             </button>

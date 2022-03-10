@@ -2,6 +2,13 @@ import styles from './style.module.css'
 
 function SettingsSection(props) {
 
+    const getName = filename => {
+        if (filename == null) return;
+        const arr = filename.split('.');
+        arr[0] = arr[0] + '_atomized';
+        return arr.join('.');
+    }
+
     async function postImage() {
         const formData = new FormData();
         formData.append('file', props.selectedImage );
@@ -13,6 +20,7 @@ function SettingsSection(props) {
         );
         const data = await response.blob()
         props.setAtomizedImageUrl(URL.createObjectURL(data))
+        props.setAtomizedImageName(getName(props.imageName));
     }
 
     return (
