@@ -21,7 +21,8 @@ def atomize():
     if file.filename == '':
         return {"error": "Error: No file was uploaded."}
     if file and allowed_file(file.filename):
-        img_io = process_image(file, 50)
+        border = 50 if ('border' not in request.form) else int(request.form['border'])
+        img_io = process_image(file, border)
         return send_file(img_io, mimetype='image/png')
     if file and not allowed_file(file.filename):
         return {"error": "Error: Invalid file type. (Only png and jpg are valid)"}

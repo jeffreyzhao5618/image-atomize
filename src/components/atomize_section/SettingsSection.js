@@ -19,6 +19,7 @@ function SettingsSection(props) {
         )
         const formData = new FormData();
         formData.append('file', props.selectedImage );
+        formData.append('border', 10);
         const response = await fetch('http://127.0.0.1:5000/atomize',
             {
                 method: 'POST',
