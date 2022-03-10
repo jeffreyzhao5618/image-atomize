@@ -66,7 +66,6 @@ def process(og_img, border = 100, mode = None):
     #do image processesing 
     for x in range(0, border):
         for y in range(0, border):
-            print("Working...")
             pix_coord = (int(og_width/border*x), int(og_height/border*y))
             pix = og_img.getpixel(pix_coord)
             r = pix[0]
