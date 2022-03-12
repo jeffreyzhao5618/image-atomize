@@ -13,27 +13,26 @@ def main():
     else:
         fin_img.show()
 
-def process_image(file, border):
+def process_image(file, border=50, size=3000):
+    cell_res = size // border
     img_io = BytesIO()
     with Image.open(file) as im:
-        fin_img = process(im, border)
+        fin_img = process(im, cell_res, border)
         fin_img.save(img_io, format='png')
     img_io.seek(0)
     return(img_io)
 
 
-smol_img_res = 50 # the resolution of the small image
-
 #makes a smaller version of the image and returns it
-def smolify(image):
+def smolify(image, cell_res):
     og_width = image.width
     og_height = image.height
 
     if og_width > og_height:
-        new_width = smol_img_res
+        new_width = cell_res
         new_height = int(new_width/og_width * og_height) 
     else:
-        new_height = smol_img_res
+        new_height = cell_res
         new_width = int(new_height/og_height * og_width)
     
     size = new_width,new_height
@@ -55,10 +54,10 @@ def tint(im, r, g, b):
 #og_path is the path of the image to be processed
 #border variable determines the amount of small pictures that make up one side of the completed picture
 #if mode is set to s than the finished image will automatically be saved
-def process(og_img, border = 100, mode = None):
+def process(og_img, cell_res=50, border = 50, mode = None):
     og_width = og_img.width
     og_height = og_img.height
-    smol_img = smolify(og_img)
+    smol_img = smolify(og_img, cell_res)
     smol_width = smol_img.width
     smol_height = smol_img.height
     fin_img = Image.new("RGB", (smol_width*border,smol_height*border))
