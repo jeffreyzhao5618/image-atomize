@@ -21,22 +21,33 @@ function SettingsSection(props) {
         const formData = new FormData();
         formData.append('file', props.selectedImage );
         formData.append('border', rangeVal);
-        const response = await fetch('http://127.0.0.1:5000/atomize',
-            {
-                method: 'POST',
-                body: formData
-            }
-        );
-        const data = await response.blob()
-        props.setAtomizedImageUrl(URL.createObjectURL(data))
-        props.setAtomizedImageName(getName(props.imageName));
-        props.setMyState(
-            {
-                isReady: false,
-                isProcessing: false,
-                isCompleted: true
-            }
-        )
+        try {
+            const response = await fetch('http://127.0.0.1:5000/atomize',
+                {
+                    method: 'POST',
+                    body: formData
+                }
+            );
+            const data = await response.blob()
+            props.setAtomizedImageUrl(URL.createObjectURL(data))
+            props.setAtomizedImageName(getName(props.imageName));
+            props.setMyState(
+                {
+                    isReady: false,
+                    isProcessing: false,
+                    isCompleted: true
+                }
+            )
+        } catch (err) {
+            alert("Something went wrong...")
+            props.setMyState(
+                {
+                    isReady: true,
+                    isProcessing: false,
+                    isCompleted: false
+                }
+            )
+        }
     }
 
     const [rangeVal, setRangeVal] = useState(50);
