@@ -20,7 +20,7 @@ function SettingsSection(props) {
         )
         const formData = new FormData();
         formData.append('file', props.selectedImage );
-        formData.append('border', 10);
+        formData.append('border', rangeVal);
         const response = await fetch('http://127.0.0.1:5000/atomize',
             {
                 method: 'POST',
@@ -50,7 +50,21 @@ function SettingsSection(props) {
                 id="dimensionRange"
                 min="2"
                 max="100"
-                onChange={e => setRangeVal(e.target.value)}
+                onChange={
+                    e => {
+                        setRangeVal(e.target.value)
+                        if (props.selectedImage != null && !props.myState.isProcessing) {
+                            props.setMyState(
+                                {
+                                    isReady: true,
+                                    isProcessing: false,
+                                    isCompleted: props.myState.isCompleted
+                                }
+                            )
+                        }
+
+                    }
+                }
             />
             <button 
                 className={`btn btn-primary btn-lg ${styles.fill}`}
