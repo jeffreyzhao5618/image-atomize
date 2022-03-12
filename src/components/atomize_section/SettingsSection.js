@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import styles from './style.module.css'
 
 function SettingsSection(props) {
@@ -38,8 +39,19 @@ function SettingsSection(props) {
         )
     }
 
+    const [rangeVal, setRangeVal] = useState(50);
+
     return (
         <div>
+            <label for="dimensionRange" className="form-label">Dimension ({rangeVal} x {rangeVal})</label>
+            <input
+                type="range"
+                className="form-range mb-3"
+                id="dimensionRange"
+                min="2"
+                max="100"
+                onChange={e => setRangeVal(e.target.value)}
+            />
             <button 
                 className={`btn btn-primary btn-lg ${styles.fill}`}
                 disabled={!props.myState.isReady}
