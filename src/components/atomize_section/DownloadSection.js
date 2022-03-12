@@ -1,7 +1,15 @@
-import ImagePlaceholder from "./ImagePlaceholder"
-import styles from "./style.module.css"
+import ImagePlaceholder from "./ImagePlaceholder";
+import styles from "./style.module.css";
+import 'react-responsive-modal/styles.css';
+import { Modal } from "react-responsive-modal";
+import { useState } from "react";
 
 function DownloadSection(props) {
+
+    const [open, setOpen] = useState(false);
+
+    const onOpenModal = () => setOpen(true);
+    const onCloseModal = () => setOpen(false);
 
     const download = name => {
         if (name == null) return;
@@ -14,7 +22,7 @@ function DownloadSection(props) {
     }
 
     return (
-        <div>
+        <>
             {props.atomizedImageUrl ?
                 <img style={{width: "100%"}} src={props.atomizedImageUrl} />
             :
@@ -22,12 +30,27 @@ function DownloadSection(props) {
             }
             <button
                 className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}
+                onClick={onOpenModal} 
+                disabled={!props.myState.isCompleted}
+            >
+                View Image
+            </button>
+            <button
+                className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}
                 onClick={() => download(props.atomizedImageName)}
                 disabled={!props.myState.isCompleted}
             >
                 Download Image
             </button>
-        </div>
+            <Modal open={open} onClose={onCloseModal} center>
+                <img 
+                    src={props.atomizedImageUrl}
+                    style= {{
+                        width: "100%"
+                    }}
+                />
+            </Modal> 
+        </>
     )
 }
 
