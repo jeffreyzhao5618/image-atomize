@@ -13,7 +13,7 @@ def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('api/atomize', methods=['POST'])
+@app.route('/api/atomize', methods=['POST'])
 def atomize():
     if 'file' not in request.files:
         return {"error": "Error: No file was uploaded."}

@@ -19,7 +19,7 @@ function AtomizeSection() {
     const [atomizedImageName, setAtomizedImageName] = useState(null);
 
     return (
-        <div className="container">
+        <>
             <div className="row">
                 <div className="col-lg py-5">
                     <UploadSection
@@ -55,7 +55,7 @@ function AtomizeSection() {
                 </div>
             </div>
             <hr/>
-        </div>
+        </>
     )
 }
 
