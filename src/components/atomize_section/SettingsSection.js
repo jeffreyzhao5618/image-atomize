@@ -22,7 +22,7 @@ function SettingsSection(props) {
         formData.append('file', props.selectedImage );
         formData.append('border', rangeVal);
         try {
-            const response = await fetch('http://127.0.0.1:5000/atomize',
+            const response = await fetch('api/atomize',
                 {
                     method: 'POST',
                     body: formData
@@ -54,7 +54,7 @@ function SettingsSection(props) {
 
     return (
         <div>
-            <label for="dimensionRange" className="form-label">Dimension ({rangeVal} x {rangeVal})</label>
+            <label className="form-label">Dimension ({rangeVal} x {rangeVal})</label>
             <input
                 type="range"
                 className="form-range mb-3"

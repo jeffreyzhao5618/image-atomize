@@ -1,19 +1,19 @@
 from flask import Flask, request, send_file
-from flask_cors import CORS
+# from flask_cors import CORS
 from image_atomizer import process_image
 from io import BytesIO
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 
 app=Flask(__name__)
-cors = CORS(app)
+# cors = CORS(app)
 # app.config['CORS_HEADERS'] = 'Content-Type'
 
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-@app.route('/atomize', methods=['POST'])
+@app.route('api/atomize', methods=['POST'])
 def atomize():
     if 'file' not in request.files:
         return {"error": "Error: No file was uploaded."}
