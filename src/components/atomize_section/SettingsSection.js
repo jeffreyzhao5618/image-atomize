@@ -22,7 +22,7 @@ function SettingsSection(props) {
         formData.append('file', props.selectedImage );
         formData.append('border', rangeVal);
         try {
-            const response = await fetch('api/atomize',
+            const response = await fetch('/api/atomize',
                 {
                     method: 'POST',
                     body: formData
