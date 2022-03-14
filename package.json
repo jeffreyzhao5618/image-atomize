@@ -16,7 +16,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "start-api": "cd /home/jeffrey/code/image-atomize/api/ && . ./venv/bin/activate && flask run",
+    "start-api": "cd ./api/ && . ./venv/bin/activate && flask run",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
