@@ -23,10 +23,10 @@ function DownloadSection(props) {
 
     return (
         <>
-            {props.atomizedImageUrl ?
+            {props.atomizedImageUrl && !props.myState.isProcessing ?
                 <img style={{width: "100%"}} src={props.atomizedImageUrl} />
             :
-                <ImagePlaceholder />
+                <ImagePlaceholder showSpinner={props.myState.isProcessing}/>
             }
             <button
                 className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}

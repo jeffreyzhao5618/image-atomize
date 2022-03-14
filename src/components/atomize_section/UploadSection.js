@@ -14,7 +14,7 @@ function UploadSection(props) {
             {props.imageUrl ?
                 <img style={{width: "100%"}} src={props.imageUrl} />
             :
-                <ImagePlaceholder />
+                <ImagePlaceholder showSpinner={false} />
             }
             
             <FileInput className="form-control mt-3" type="file" id="formFile" accept=".jpg,.png,.jpeg"

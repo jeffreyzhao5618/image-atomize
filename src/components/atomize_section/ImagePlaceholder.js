@@ -18,10 +18,26 @@ const ImagePlaceholderIcon = styled.img`
     transform: translate(-50%, -50%);
 `
 
+const MySpinner = styled.div`
+    width: 20%;
+    height: 20%;
+    margin: 0;
+    position: relative;
+    top: 40%;
+    left: 40%;
+`
+
 function ImageSection(props) {
     return (
         <ImagePlaceholderDiv>
-            <ImagePlaceholderIcon className="user-select-none" src={faImage} />
+            {
+                props.showSpinner ?
+                    <MySpinner className="spinner-border text-primary" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </MySpinner>
+                :
+                    <ImagePlaceholderIcon className="user-select-none" src={faImage} />
+            }
         </ImagePlaceholderDiv>
     )
 }
