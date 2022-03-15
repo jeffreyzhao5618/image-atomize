@@ -5,7 +5,7 @@ import mona from './mona_atomized.jpg'
 
 function App() {
   return (
-    <div className="container">
+    <div className="container py-5">
       <Header />
       <AtomizeSection/>
       <h1 className="text-center display-3">What is this?</h1>
