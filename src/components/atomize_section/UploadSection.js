@@ -12,7 +12,7 @@ function UploadSection(props) {
     return (
         <>
             {props.imageUrl ?
-                <img style={{width: "100%"}} src={props.imageUrl} />
+                <img style={{width: "100%"}} src={props.imageUrl} alt="Selected" />
             :
                 <ImagePlaceholder showSpinner={false} />
             }
@@ -21,7 +21,7 @@ function UploadSection(props) {
                 disabled={props.myState.isProcessing}
                 onChange={e => 
                     {
-                        if (e.target.value != "") {
+                        if (e.target.value !== "") {
                             props.setImageName(e.target.files[0].name);
                             props.setImageUrl(URL.createObjectURL(e.target.files[0]));
                             props.setSelectedImage(e.target.files[0]);

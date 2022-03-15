@@ -24,9 +24,9 @@ function DownloadSection(props) {
     return (
         <>
             {props.atomizedImageUrl && !props.myState.isProcessing ?
-                <img style={{width: "100%"}} src={props.atomizedImageUrl} />
+                <img style={{width: "100%"}} src={props.atomizedImageUrl} alt="Atomized" />
             :
-                <ImagePlaceholder showSpinner={props.myState.isProcessing}/>
+                <ImagePlaceholder showSpinner={props.myState.isProcessing} />
             }
             <button
                 className={`btn btn-secondary btn-lg mt-3 ${styles.fill}`}
@@ -48,6 +48,7 @@ function DownloadSection(props) {
                     style= {{
                         width: "100%"
                     }}
+                    alt="Atomized"
                 />
             </Modal> 
         </>
