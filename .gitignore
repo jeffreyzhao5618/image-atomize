@@ -8,9 +8,6 @@
 # testing
 /frontend/coverage
 
-# production
-/frontend/build
-
 # misc
 .DS_Store
 .env.local

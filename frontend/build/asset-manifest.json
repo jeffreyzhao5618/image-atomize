@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ea419765.css",
+    "main.js": "/static/js/main.722821ab.js",
+    "static/media/mona_atomized.jpg": "/static/media/mona_atomized.6ac13b2467f99957f1c6.jpg",
+    "static/media/image-regular.svg": "/static/media/image-regular.98de0e0230c93f42bee4d477d5dec58f.svg",
+    "index.html": "/index.html",
+    "main.ea419765.css.map": "/static/css/main.ea419765.css.map",
+    "main.722821ab.js.map": "/static/js/main.722821ab.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ea419765.css",
+    "static/js/main.722821ab.js"
+  ]
+}
